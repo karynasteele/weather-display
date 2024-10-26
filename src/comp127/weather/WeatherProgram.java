@@ -88,34 +88,20 @@ public class WeatherProgram {
     private List<WeatherWidget> createWidgets(double size) {
         return List.of(
             new TemperatureWidget(size),
-            new TemperatureWidget(size),  // TODO: Replace with your own widgets as you implement them
+            new ForecastWidget(size),  // TODO: Replace with your own widgets as you implement them
             new TemperatureWidget(size));
     }
 
     private void selectWidgetAtIndex(int index) {
-        // TODO: Return without doing anything if index is out of bounds.
-        //       (Hint: How do you know what the bounds are? Don’t assume it’s any specific number.
-        //       There is an instance variable that you can use to figure out how many widgets
-        //       there are.)
+        if((index < 0) || index >= miniWidgets.size()) {
+            return;
+        }
+        if (displayedLargeWidget != null) {
+            canvas.remove(displayedLargeWidget.getGraphics());
+        }
 
-        // TODO: Remove the currently selected widget’s large UI from the canvas to make room for
-        //       the new selection.
-        //       (Hint: How do you get the currently selected large widget? Study the instance
-        //              variables carefully.)
-        //       (Hint: There might be no widget selected yet. How do you test for that?)
-        //       (Hint: You can’t add or remove a WeatherWidget directly from the canvas, because a
-        //              WeatherWidget is not a GraphicsObject. How do you get something that you
-        //              _can_ add or remove? Study the WeatherWidget interface.)
-        //       (Hint: The large widgets already have the correct size and position. You just need
-        //              to add and remove them from the canvas.)
-
-        // TODO: Update the currently displayed widget to be the one with the given index.
-        //       (Think: why do we need to use an instance variable instead of a local variable?)
-
-        // TODO: Add the newly selected widget’s UI to the canvas.
-
-        // Hint on all of the TODOs: the description above is much longer than the actual code!
-        // 👉 If you are writing a huge amount of code, you’re making it too complicated. 👈
+        displayedLargeWidget = largeWidgets.get(index);
+        canvas.add(displayedLargeWidget.getGraphics(), 0, 0);
 
         selectionHighlight.setPosition(largeWidgetSize, miniWidgetSize * index);
     }
