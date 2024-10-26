@@ -1,4 +1,4 @@
-public void update(WeatherData data) {
+//public void update(WeatherData data) {
     // Declare variables for the x and y positions of the next box, and
     // set them both to 0 (because the first box will be positioned
     // in the upper left of the box group).
@@ -29,4 +29,4 @@ public void update(WeatherData data) {
             // Add `boxHeight` plus some multiple of `boxSpacing` to the next y position.
 
     // Get the first element of `boxes` (if there is one!) and pass it to `selectForecast`
-}
+//}

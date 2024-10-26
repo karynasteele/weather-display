@@ -52,7 +52,7 @@ public class TemperatureWidget implements WeatherWidget {
         icon.setImagePath(currentConditions.getWeatherIcon());
 
         label.setText(
-            currentConditions.getTemperature()  // TODO: Format to one decimal place, handling null
+            FormattingHelpers.checkForNull(currentConditions.getTemperature())  // TODO: Format to one decimal place, handling null
              + "\u2109");  // degree symbol
 
         description.setText(currentConditions.getWeatherDescription());
@@ -66,6 +66,8 @@ public class TemperatureWidget implements WeatherWidget {
 
         label.setCenter(size * 0.5, size * 0.8);
 
+        double labelHeight = label.getHeight();
+        description.setCenter(size * 0.5, size * 0.8 + labelHeight);
         // TODO: Place the description directly underneath the label by adding the height of
         //       `description` (plus maybe a little padding) to the position of label
     }
